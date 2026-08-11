@@ -1,0 +1,17 @@
+[project]
+name = "passgen"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Zhuravlev3906", email = "zhuravlev3906@yandex.ru" }
+]
+requires-python = ">=3.9"
+dependencies = []
+
+[project.scripts]
+passgen = "passgen:main"
+
+[build-system]
+requires = ["uv_build>=0.12.0,<0.13.0"]
+build-backend = "uv_build"
