@@ -7,7 +7,9 @@ authors = [
     { name = "Zhuravlev3906", email = "zhuravlev3906@yandex.ru" }
 ]
 requires-python = ">=3.9"
-dependencies = []
+dependencies = [
+    "pytest>=8.4.2",
+]
 
 [project.scripts]
 passgen = "passgen:main"
