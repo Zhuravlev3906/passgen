@@ -10,12 +10,14 @@ class Generator:
         lowercase: bool,
         numbers: bool,
         special: bool,
+        exclude: str = "",
     ) -> None:
         self.length = length
         self.uppercase = uppercase
         self.lowercase = lowercase
         self.numbers = numbers
         self.special = special
+        self.exclude = exclude
 
     def generate(self) -> str:
         character_pool = ""
@@ -30,5 +32,8 @@ class Generator:
             character_pool += string.digits
         if self.special:
             character_pool += string.punctuation
+
+        for char in self.exclude:
+            character_pool = character_pool.replace(char, "")
 
         return "".join(secrets.choice(character_pool) for _ in range(self.length))

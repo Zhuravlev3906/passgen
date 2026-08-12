@@ -12,6 +12,7 @@ class Config:
     include_lowercase: bool = True
     include_numbers: bool = True
     include_special: bool = True
+    exclude_chars: str = ""
     output_file = None
 
 
