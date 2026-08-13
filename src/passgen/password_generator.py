@@ -1,6 +1,6 @@
+import random
 import secrets
 import string
-import random
 
 from passgen.config import Config
 from passgen.exception import PasswordGenerationException
