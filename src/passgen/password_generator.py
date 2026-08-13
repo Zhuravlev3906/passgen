@@ -1,32 +1,31 @@
 import secrets
 import string
 
+from passgen.config import Config
+from passgen.exception import PasswordGenerationException
 
-class Generator:
+
+class PasswordGenerator:
     def __init__(
         self,
-        length: int,
-        uppercase: bool,
-        lowercase: bool,
-        numbers: bool,
-        special: bool,
-        exclude: str = "",
+        config: Config,
     ) -> None:
-        self.length = length
-        self.uppercase = uppercase
-        self.lowercase = lowercase
-        self.numbers = numbers
-        self.special = special
-        self.exclude = exclude
+        self.length = config.length
+        self.uppercase = config.include_uppercase
+        self.lowercase = config.include_lowercase
+        self.numbers = config.include_numbers
+        self.special = config.include_special
+        self.exclude = config.exclude_chars
 
     def generate(self) -> str:
         character_pool = ""
-        if self.uppercase and self.lowercase:
-            character_pool += string.ascii_letters
-        elif self.uppercase:
+
+        if self.uppercase:
             character_pool += string.ascii_uppercase
-        else:
+        elif self.lowercase:
             character_pool += string.ascii_lowercase
+        else:
+            character_pool += string.ascii_letters
 
         if self.numbers:
             character_pool += string.digits
@@ -35,5 +34,10 @@ class Generator:
 
         for char in self.exclude:
             character_pool = character_pool.replace(char, "")
+
+        if not character_pool:
+            raise PasswordGenerationException(
+                "Character pool is empty. Cannot generate password."
+            )
 
         return "".join(secrets.choice(character_pool) for _ in range(self.length))

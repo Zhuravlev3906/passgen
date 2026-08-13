@@ -8,12 +8,12 @@ class Config:
     """Configuration for the password generator."""
 
     length: int = 12
-    include_uppercase: bool = True
-    include_lowercase: bool = True
-    include_numbers: bool = True
-    include_special: bool = True
+    include_uppercase: bool = False
+    include_lowercase: bool = False
+    include_numbers: bool = False
+    include_special: bool = False
     exclude_chars: str = ""
-    output_file = None
+    output_file: str = ""
 
 
 def validate_config(config: Config) -> None:
