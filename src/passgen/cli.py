@@ -1,7 +1,7 @@
 import argparse
 
 
-def create_parser() -> argparse.ArgumentParser:
+def _create_parser() -> argparse.ArgumentParser:
     """Create an argument parser for the password generator CLI."""
 
     parser = argparse.ArgumentParser(description="Generate secure passwords")
@@ -37,5 +37,5 @@ def create_parser() -> argparse.ArgumentParser:
 
 
 def get_args() -> argparse.Namespace:
-    parser = create_parser()
+    parser = _create_parser()
     return parser.parse_args()
