@@ -9,14 +9,28 @@ def _create_parser() -> argparse.ArgumentParser:
         "--length", type=int, default=12, help="Length of the password", metavar="N"
     )
     parser.add_argument(
-        "--uppercase", action="store_true", help="Include uppercase letters"
+        "--no-uppercase",
+        action="store_false",
+        dest="include_uppercase",
+        help="Include uppercase letters",
     )
     parser.add_argument(
-        "--lowercase", action="store_true", help="Include lowercase letters"
+        "--no-lowercase",
+        action="store_false",
+        dest="include_lowercase",
+        help="Include lowercase letters",
     )
-    parser.add_argument("--digits", action="store_true", help="Include digits")
     parser.add_argument(
-        "--special", action="store_true", help="Include special characters"
+        "--no-digits",
+        action="store_false",
+        dest="include_numbers",
+        help="Include digits",
+    )
+    parser.add_argument(
+        "--no-special",
+        action="store_false",
+        dest="include_special",
+        help="Include special characters",
     )
     parser.add_argument(
         "--exclude",
